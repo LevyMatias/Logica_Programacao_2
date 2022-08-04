@@ -1,0 +1,38 @@
+<canvas width="800" height="450"></canvas>
+<h2>Bandeira do Brasil</h2>
+<script>
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+
+    ctx.fillStyle = '#009900';
+    ctx.fillRect(0,0,800,450);
+
+    ctx.fillStyle = '#e6e600';
+
+    // triangulo amarelo direito
+    ctx.beginPath();
+    ctx.moveTo(400,20);
+    ctx.lineTo(400,225);
+    ctx.lineTo(750,225);
+
+    ctx.moveTo(400,430);
+    ctx.lineTo(400,225);
+    ctx.lineTo(750,225);
+
+    // triangulo amarelo esquerdo
+    ctx.moveTo(400,430);
+    ctx.lineTo(400,225);
+    ctx.lineTo(50,225);
+    ctx.fill();
+
+    ctx.moveTo(400,20);
+    ctx.lineTo(400,225);
+    ctx.lineTo(50,225);
+    ctx.fill();
+
+    // circulo azul
+    ctx.fillStyle = '#000080';
+    ctx.beginPath();
+    ctx.arc(400,225,150,0,2*3.14);
+    ctx.fill();
+</script>

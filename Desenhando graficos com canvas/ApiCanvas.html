@@ -1,0 +1,18 @@
+<canvas width="700" height="450"></canvas>
+<h2>Bandeira da Alemanha</h2>
+<script>
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(0,0,700,450);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,700,150);
+    
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0,150,700,150);
+
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(0,300,700,150);
+</script>
