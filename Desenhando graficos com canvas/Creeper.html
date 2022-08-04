@@ -1,4 +1,23 @@
 <canvas width="600" height="400"></canvas>
 <script>
-    
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+
+    // cabeça
+    ctx.fillStyle = 'darkgreen';
+    ctx.fillRect(0,0,350,300);
+
+    // olho 1
+    ctx.fillStyle = 'black';
+    ctx.fillRect(50,40,90,90);
+
+    // olho 2
+    ctx.fillRect(210,40,90,90);
+
+    // nariz
+    ctx.fillRect(140,130,70,100);
+
+    // boca 
+    ctx.fillRect(100,180,40,110);
+    ctx.fillRect(210,180,40,110);
 </script>
