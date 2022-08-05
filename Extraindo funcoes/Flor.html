@@ -1,0 +1,25 @@
+<canvas width="600" height="400"></canvas>
+<script>
+    var cvs = document.querySelector("canvas");
+    var ctx = cvs.getContext("2d");
+
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    function drawCircle(x, y, raio, cor) {
+
+        ctx.fillStyle = cor;
+        ctx.beginPath();
+        ctx.arc(x, y, raio, 0, 2*3.14);
+        ctx.fill();
+    }
+    function drawFlower(x, y){
+        drawCircle(x,y,20,'red');
+        drawCircle(x,y-40,20,'yellow');
+        drawCircle(x-40,y,20,'orange');
+        drawCircle(x+40,y,20,'black');
+        drawCircle(x,y+40,20,'blue');
+    }
+
+    drawFlower(300,200);  
+</script>
