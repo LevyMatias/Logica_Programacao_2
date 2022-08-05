@@ -1,0 +1,22 @@
+<canvas width="600" height="400"></canvas>
+<h2>Qual é a fração?</h2>
+<script>
+    var cvs = document.querySelector("canvas");
+    var ctx = cvs.getContext("2d");
+
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    function drawRectangle(x, y, w, h, cor) {
+        ctx.fillStyle = cor;
+        ctx.fillRect(x,y,w,h);
+        ctx.fill();
+        
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(x,y,w,h);
+    }
+    for(var x = 300; x < 500; x = x + 50){
+        drawRectangle(x,200,50,50,'green');
+    }
+    drawRectangle(450,200,50,50,'lightgray');
+</script>
