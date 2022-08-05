@@ -1,14 +1,18 @@
 <canvas width="600" height="400"></canvas>
 <script>
-    function drawGreenRectangle() {
+    function drawRectangle(x,y,w,h,color) {
         var cvs = document.querySelector("canvas");
         var ctx = cvs.getContext("2d");
 
-        ctx.fillStyle = 'green';
-        ctx.fillRect(0,0,100,100);
-        ctx.fillStroke = 'black';
-        ctx.strokeRect(0,0,100,100);
+        ctx.fillStyle = color;
+        ctx.fillRect(x,y,w,h);
+        ctx.strokeStyle = 'red';
+        ctx.strokeRect(x,y,w,h);
     }
 
-    drawGreenRectangle();
+    for(var x = 0; x < 600; x = x + 75){ // linhas 
+        for(var y = 0; y < 400; y = y + 70){ // colunas
+            drawRectangle(x,y,75,70,'white');
+        }
+    }
 </script>
