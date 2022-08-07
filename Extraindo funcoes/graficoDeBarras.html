@@ -1,0 +1,40 @@
+<canvas width="600" height="400"></canvas>
+<h2>Nevegadores mais usados em 2015 e 2016</h2>
+<script>
+    var cvs = document.querySelector("canvas");
+    var ctx = cvs.getContext("2d");
+
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    var ano2015 = [50, 25, 20, 5];
+    var ano2016 = [65, 20, 13, 2];
+    var cores = ['blue', 'green', 'yellow', 'red'];
+
+    function drawText(x, y, text) {
+        ctx.font='15px Georgia';
+        ctx.fillStyle='black';
+        ctx.fillText(text, x, y);    
+    }
+
+    function drawRectangle(x, y, w, h, cor) {
+        ctx.fillStyle = cor;
+        ctx.fillRect(x,y,w,h);
+        ctx.fill();
+        
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(x,y,w,h);
+    }
+
+    function drawBar(x,y,ano,cor,text){
+        drawText(x + 30,y - 20,text);
+        var height = 0;
+        for(var h = 0; h < ano.length; h++){
+            drawRectangle(x,y + height,100,ano[h],cor[h]);
+            height = height + ano[h];
+        }
+    }
+
+    drawBar(50,50,ano2015,cores,'2015');
+    drawBar(180,50,ano2016,cores,'2016');
+</script>
