@@ -1,0 +1,19 @@
+<canvas width="600" height="400"></canvas>
+<script>
+    var cvs = document.querySelector("canvas");
+    var ctx = cvs.getContext("2d");
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(0,0,600,400);
+
+    function circleClick(event){
+        var x = event.pageX - cvs.offsetLeft;
+        var y = event.pageY - cvs.offsetTop;
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(x, y, 10,0, 2 * 3.14);
+        ctx.fill();
+        console.log(event);
+    }
+
+    cvs.onclick = circleClick;
+</script>
