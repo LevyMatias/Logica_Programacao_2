@@ -11,9 +11,15 @@
     function circleClick(event){
         var x = event.pageX - cvs.offsetLeft;
         var y = event.pageY - cvs.offsetTop;
+        var r = 10;
+
+        if(event.shiftKey == true){ // muda o tamanho do circulo
+            r += 20;
+        }
+        
         ctx.fillStyle = colors[i];
         ctx.beginPath();
-        ctx.arc(x, y, 10,0, 2 * 3.14);
+        ctx.arc(x, y, r,0, 2 * 3.14);
         ctx.fill();
     }
 
