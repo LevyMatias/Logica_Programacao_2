@@ -7,14 +7,18 @@
 
     var colors = ['blue', 'red', 'green'];
     var i = 0;
+    var r = 10;
 
     function circleClick(event){
         var x = event.pageX - cvs.offsetLeft;
         var y = event.pageY - cvs.offsetTop;
-        var r = 10;
 
-        if(event.shiftKey == true){ // muda o tamanho do circulo
-            r += 20;
+        if(event.shiftKey && r < 60){ // muda o tamanho do circulo
+            r += 10;
+        }
+
+        if(event.altKey && r > 5){ // diminui o tamanho do circulo
+            r -= 5;
         }
         
         ctx.fillStyle = colors[i];
