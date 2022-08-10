@@ -1,0 +1,29 @@
+<canvas width="600" height="400"></canvas>
+<script>
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    var raio = 10;
+
+    function drawCircle(x, y, raio, cor) {
+        ctx.fillStyle = cor;
+        ctx.beginPath();
+        ctx.arc(x, y, raio, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    drawCircle(300,200, raio + 20, 'red'); 
+    drawCircle(300,200, raio + 10, 'white');
+    drawCircle(300,200, raio, 'red'); 
+
+    function shoot(evento) {
+        var x = evento.pageX - cvs.offsetLeft;
+        var y = evento.pageY - cvs.offsetTop;
+        if(x >= 290 && x <= 310 && y >= 193 && y <= 207){
+            alert("Voce acertou!");
+        }
+    }
+    cvs.onclick = shoot;
+</script>
