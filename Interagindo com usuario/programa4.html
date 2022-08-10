@@ -1,0 +1,27 @@
+<canvas width="600" height="400"></canvas>
+<script>
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle = 'darkblue';
+    ctx.fillRect(0, 0, 600, 400);
+
+    var draw = false;
+
+    cvs.onmousemove = function(evento) {
+        if(draw) {
+            var x = evento.pageX - cvs.offsetLeft;
+            var y = evento.pageY - cvs.offsetTop;
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, 2 * 3.14);
+            ctx.fill();
+        }
+    }
+
+    cvs.onmousedown = function() {
+        draw = true;
+    }
+     cvs.onmouseup = function() {
+        draw = false;
+    }
+</script>
