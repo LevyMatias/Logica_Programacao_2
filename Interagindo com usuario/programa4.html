@@ -1,4 +1,7 @@
 <canvas width="600" height="400"></canvas>
+<br>
+<p>Selecione a cor da caneta:</p>
+<input type="color">
 <script>
     var cvs = document.querySelector('canvas');
     var ctx = cvs.getContext('2d');
@@ -6,12 +9,13 @@
     ctx.fillRect(0, 0, 600, 400);
 
     var draw = false;
+    var userInput = document.querySelector('input');
 
     cvs.onmousemove = function(evento) {
         if(draw) {
             var x = evento.pageX - cvs.offsetLeft;
             var y = evento.pageY - cvs.offsetTop;
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = userInput.value;
             ctx.beginPath();
             ctx.arc(x, y, 10, 0, 2 * 3.14);
             ctx.fill();
