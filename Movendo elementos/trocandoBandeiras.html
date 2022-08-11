@@ -1,0 +1,57 @@
+<canvas width="600" height="400"></canvas>
+<script>
+function BandeiraBrasil() {
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle="green";
+    ctx.fillRect(0, 0, 600, 400);
+
+    ctx.fillStyle="yellow";
+    ctx.beginPath();
+    ctx.moveTo(300, 50);
+    ctx.lineTo(50, 200);
+    ctx.lineTo(550, 200);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(50, 200);
+    ctx.lineTo(300, 350);
+    ctx.lineTo(550, 200);
+    ctx.fill();
+
+    ctx.fillStyle="darkblue";
+    ctx.beginPath();
+
+    ctx.arc(300, 200, 100, 0, 2* Math.PI);
+    ctx.fill();
+}
+
+function BandeiraAlemanha() {
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, 600, 133);
+
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 133, 600, 133);
+
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(0, 266, 600, 133);
+}
+
+var mudar = false;
+
+function trocarBandeira(){
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.clearRect(0, 0, 600, 400);
+   if(mudar){
+        BandeiraAlemanha();
+   }else {
+        BandeiraBrasil();
+   }
+   mudar = !mudar;
+}
+
+setInterval(trocarBandeira, 3000);
+</script>
