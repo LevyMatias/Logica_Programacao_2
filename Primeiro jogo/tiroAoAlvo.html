@@ -1,0 +1,51 @@
+<canvas width="600" height="400"></canvas>
+<script>
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    var raio = 10;
+    var xPosicao;
+    var yPosicao;
+
+    function drawCircle(x, y, raio, cor) {
+        ctx.fillStyle = cor;
+        ctx.beginPath();
+        ctx.arc(x, y, raio, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    function desenhaAlvo(x,y){
+        drawCircle(x,y, raio + 20, 'red'); 
+        drawCircle(x,y, raio + 10, 'white');
+        drawCircle(x,y, raio, 'red'); 
+    }
+
+    function sorteiaPosicao(max){
+        return Math.floor(Math.random() * max);
+    }
+
+    function updateScreen(){
+        ctx.clearRect(0, 0, 600, 400);
+        xPosicao = sorteiaPosicao(600);
+        yPosicao = sorteiaPosicao(400);
+        desenhaAlvo(xPosicao,yPosicao);
+    }
+    
+
+    function shoot(evento) {
+        var x = evento.pageX - cvs.offsetLeft;
+        var y = evento.pageY - cvs.offsetTop;
+        if((x > xPosicao - raio) 
+            && (x < xPosicao + raio) 
+            && (y > yPosicao - raio) 
+            && (y < yPosicao + raio)){
+
+            alert("Voce acertou!");
+        }
+    }
+
+    setInterval(updateScreen,800);
+    cvs.onclick = shoot;
+</script>
