@@ -1,0 +1,44 @@
+<canvas width="600" height="400"></canvas>
+<script>
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    function drawCircle(x, y, raio) {
+        ctx.fillStyle = 'blue';
+        ctx.beginPath();
+        ctx.arc(x, y, raio, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    function clearScreen() {
+        ctx.clearRect(0, 0, 600, 400);
+    }
+
+    var x = 20;
+    var dx = 2;
+    var raio = 10;
+    var r = 1;
+    function updateScreen() {
+        clearScreen();
+        drawCircle(x, 20, raio);
+        
+        if(raio >= 30){ // diminui valor raio
+            r--;
+        }
+        if(raio <= 20){ // aumenta valor raio
+            r++;
+        }       
+        raio += r; // aumenta valor raio
+
+        if(x >= 600){ // volta para esquerda
+            dx--;
+        }
+        if(x <= 20){ // volta andar para direita
+            dx++;
+        }
+        x += dx; // anda para direita
+    }
+    setInterval(updateScreen, 20);
+</script>
