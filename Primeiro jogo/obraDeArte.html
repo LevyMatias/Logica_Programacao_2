@@ -1,0 +1,92 @@
+<meta charset="UTF-8">
+<canvas width="600" height="400"></canvas>
+<script>
+    function drawRectangle(x, y, tamanho, cor) {
+        ctx.fillStyle = cor;
+        ctx.fillRect(x, y, tamanho, tamanho)
+        ctx.fill();
+    }
+
+    function drawCircle(x, y, raio, cor) {
+        ctx.fillStyle = cor;
+        ctx.beginPath();
+        ctx.arc(x, y, raio, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    function paletaCores() {
+        drawRectangle(xVermelho, yQuadrados, tamanhoQuadrados, 'red');
+        drawRectangle(xVerde, yQuadrados, tamanhoQuadrados, 'green');
+        drawRectangle(xAzul, yQuadrados, tamanhoQuadrados, 'blue');
+    }
+    
+    
+    function lidaComMovimentoDoMouse(evento) {
+        var x = evento.pageX - cvs.offsetLeft;
+        var y = evento.pageY - cvs.offsetTop;
+        
+        if(desenha && podeDesenharNaArea(x,y)) {
+            drawCircle(x, y, 5, corAtual);
+        }
+    }
+    
+    function habilitaDesenhar() {
+        desenha = true;
+    }
+    
+    function desabilitaDesenhar() {
+        desenha = false;
+    }
+    
+    function podeDesenharNaArea(x, y) {
+        if(x >= 0 && x < 3*tamanhoQuadrados && y >= 0 && y < tamanhoQuadrados) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function changeColor(evento){
+        var x = evento.pageX - cvs.offsetLeft;
+        var y = evento.pageY - cvs.offsetTop;
+
+        if (y > yQuadrados && y < yQuadrados + tamanhoQuadrados) {
+
+            if (x > xVermelho && x < xVermelho + tamanhoQuadrados) {
+
+                corAtual = 'red';
+
+            } else if (x > xVerde && x < xVerde + tamanhoQuadrados) {
+
+                corAtual = 'green';
+
+            } else if (x > xAzul && x < xAzul + tamanhoQuadrados) {
+
+                corAtual = 'blue';
+            }
+        }
+    }
+
+    var cvs = document.querySelector('canvas');
+    var ctx = cvs.getContext('2d');
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    var desenha = false;
+    var corAtual = 'blue';
+    var xVermelho = 0;
+    var xVerde  = 50;
+    var xAzul = 100;
+    var yQuadrados = 0;
+    var tamanhoQuadrados = 50;
+
+    paletaCores(); // mostra os quadrados de seleção de cores
+    
+    cvs.onmousemove = lidaComMovimentoDoMouse;
+    
+    cvs.onmousedown = habilitaDesenhar;
+    
+    cvs.onmouseup = desabilitaDesenhar;
+    
+    cvs.onclick = changeColor;
+</script>

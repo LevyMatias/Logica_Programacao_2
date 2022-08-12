@@ -6,8 +6,8 @@
     ctx.fillRect(0, 0, 600, 400);
 
     var raio = 10;
-    var xPosicao;
-    var yPosicao;
+    var pxAleatorio;
+    var pyAleatorio;
 
     function drawCircle(x, y, raio, cor) {
         ctx.fillStyle = cor;
@@ -28,19 +28,18 @@
 
     function updateScreen(){
         ctx.clearRect(0, 0, 600, 400);
-        xPosicao = sorteiaPosicao(600);
-        yPosicao = sorteiaPosicao(400);
-        desenhaAlvo(xPosicao,yPosicao);
+        pxAleatorio = sorteiaPosicao(600);
+        pyAleatorio = sorteiaPosicao(400);
+        desenhaAlvo(pxAleatorio,pyAleatorio);
     }
-    
 
     function shoot(evento) {
         var x = evento.pageX - cvs.offsetLeft;
         var y = evento.pageY - cvs.offsetTop;
-        if((x > xPosicao - raio) 
-            && (x < xPosicao + raio) 
-            && (y > yPosicao - raio) 
-            && (y < yPosicao + raio)){
+        if((x > pxAleatorio - raio) 
+            && (x < pxAleatorio + raio) 
+            && (y > pyAleatorio - raio) 
+            && (y < pyAleatorio + raio)){
 
             alert("Voce acertou!");
         }
